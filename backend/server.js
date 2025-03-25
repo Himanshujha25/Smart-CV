@@ -4,7 +4,11 @@ const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'https://smart-cv-iota.vercel.app',
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 const path = require('path');
 
