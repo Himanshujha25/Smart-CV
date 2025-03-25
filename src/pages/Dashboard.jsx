@@ -2,7 +2,6 @@ import { h1 } from "framer-motion/client";
 import { useState, useRef, useEffect } from "react";
 import { FaUser, FaRobot, FaGraduationCap, FaFileAlt, FaSignOutAlt, FaCode, FaSun, FaBriefcase } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-import Profile from "/pages/Profile.jsx"
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("personal");
   const [darkMode, setDarkMode] = useState(false);
