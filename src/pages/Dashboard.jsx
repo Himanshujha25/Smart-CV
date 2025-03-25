@@ -52,11 +52,12 @@ export default function Dashboard() {
     alert("Generating CV...");
   
     try {
-      const response = await fetch('http://localhost:3000/generate-resume', {
+      const response = await fetch('https://smart-cv-s3xx.onrender.com/generate-resume', { 
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData)
       });
+      ;
   
       if (response.ok) {
         const data = await response.json();

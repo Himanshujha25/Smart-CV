@@ -52,8 +52,9 @@ app.post('/generate-resume', (req, res) => {
 
   writeStream.on('finish', () => {
     console.log('PDF Generated:', filename);
-    res.json({ downloadLink: `http://localhost:3000/resumes/${filename}` });
-  });
+    res.json({ downloadLink: `https://smart-cv-s3xx.onrender.com/downloads/${filename}` });
+});
+
 
   writeStream.on('error', (err) => {
     console.error('PDF generation failed:', err);
