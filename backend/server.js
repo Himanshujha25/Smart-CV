@@ -52,7 +52,8 @@ app.post('/generate-resume', (req, res) => {
 
   writeStream.on('finish', () => {
     console.log('PDF Generated:', filename);
-    res.json({ downloadLink: `https://smart-cv-s3xx.onrender.com/downloads/${filename}` });
+    res.json({ downloadLink: `https://smart-cv-s3xx.onrender.com/resumes/${filename}` });
+
 });
 
 
