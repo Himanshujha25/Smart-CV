@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 
 
-export default function AuthPage() {
+export default function SignIn() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
