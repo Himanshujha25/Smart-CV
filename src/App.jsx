@@ -2,7 +2,7 @@ import React from 'react'
 import "./index.css"
 import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
-import SignIn from './pages/Signin'
+import SignIn from './pages/SignIn'
 import Dashboard from './pages/Dashboard'
 
 export default function App() {
