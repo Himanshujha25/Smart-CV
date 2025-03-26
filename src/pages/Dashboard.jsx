@@ -333,7 +333,7 @@ export default function Dashboard() {
       <div className="block md:hidden">
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg absolute top-4 right-4"
+          className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg absolute top-1 right-2"
         >
           <FaSignOutAlt /> Logout
         </button>
