@@ -83,7 +83,6 @@ export default function Dashboard() {
   };
   
 
-
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -101,18 +100,15 @@ export default function Dashboard() {
     }
   };
 
-
-
-
   const renderContent = () => {
 
     const contentMap = {
 
       personal: (
         <>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2 ">
             <FaRobot className="text-purple-600 text-4xl" />
-            <h1 className="text-3xl font-extrabold">
+            <h1 className="text-3xl font-extrabold ">
               <span className="text-black">Smart</span>
               <span className="text-indigo-700">CV</span>
               <span className="text-purple-600"> AI</span>
@@ -120,7 +116,7 @@ export default function Dashboard() {
           </div>
           <p className="text-center text-gray-500 ">Your AI Powered Resume Builder</p>
 
-          <h2 className="text-2xl font-bold mb-6">Personal Details</h2>
+          <h2 className="text-2xl font-bold mt-5 mb-3">Personal Details</h2>
           <form className="space-y-4 personal" >
             <input
               type="text"
@@ -167,7 +163,7 @@ export default function Dashboard() {
           </div>
           <p className="text-center text-gray-500 ">Your AI Powered Resume Builder</p>
 
-          <h2 className="text-2xl font-bold mb-6">Qualifications</h2>
+          <h2 className="text-2xl font-bold mt-5 mb-3">Qualifications</h2>
           <form className="space-y-4 qualification" >
             <input
               type="text"
@@ -216,7 +212,7 @@ export default function Dashboard() {
           </div>
           <p className="text-center text-gray-500 ">Your AI Powered Resume Builder</p>
 
-          <h2 className="text-2xl font-bold mb-6">Professional Summary</h2>
+          <h2 className="text-2xl font-bold mt-5 mb-3">Professional Summary</h2>
           <textarea
             placeholder="Write your summary..."
             value={summary}
@@ -249,7 +245,7 @@ export default function Dashboard() {
           </div>
           <p className="text-center text-gray-500 ">Your AI Powered Resume Builder</p>
 
-          <h2 className="text-2xl font-bold mb-6">Skills</h2>
+          <h2 className="text-2xl font-bold mt-5 mb-3">Skills</h2>
           <textarea
             placeholder="List your skills separated by commas (e.g., HTML, CSS, JavaScript)"
             value={skills}
@@ -276,9 +272,9 @@ export default function Dashboard() {
       ),
       profession: (
         <>
-        <div className="flex items-center justify-center gap-2">
+        <div className="flex items-center justify-center gap-2 ">
             <FaRobot className="text-purple-600 text-4xl" />
-            <h1 className="text-3xl font-extrabold">
+            <h1 className="text-3xl font-extrabold ">
               <span className="text-black">Smart</span>
               <span className="text-indigo-700">CV</span>
               <span className="text-purple-600"> AI</span>
@@ -286,7 +282,7 @@ export default function Dashboard() {
           </div>
           <p className="text-center text-gray-500 ">Your AI Powered Resume Builder</p>
 
-          <h2 className="text-2xl font-bold mb-6">Profession Details</h2>
+          <h2 className="text-2xl font-bold mt-5 mb-3">Profession Details</h2>
           <input
             type="text"
             placeholder="Job Title"
@@ -331,22 +327,39 @@ export default function Dashboard() {
   };
 
   return (
-    <div className={`min-h-screen p-6 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'}`}>
+    <div className={`min-h-screen p-4 sm:p-6 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-black'} relative`}>
+  
+      {/* Logout Button for Mobile (Top Right) */}
+      <div className="block md:hidden">
+        <button
+          onClick={handleLogout}
+          className="flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg absolute top-4 right-4"
+        >
+          <FaSignOutAlt /> Logout
+        </button>
+      </div>
+  
       {/* Profile Section */}
-      <div className="flex items-center justify-between mb-6  ">
-        <div className="flex items-center gap-4 ">
-          <img src={userPhoto} alt="User" className="w-16 h-16 rounded-full object-cover border-2 border-indigo-600" />
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+        
+        {/* User Info */}
+        <div className="flex items-center gap-4 w-full md:w-auto">
+          <img
+            src={userPhoto}
+            alt="User"
+            className="w-16 h-16 rounded-full object-cover border-2 border-indigo-600"
+          />
           <div>
             <h2 className="text-xl font-bold">{name}</h2>
-            <p>{email}</p>
-            <div className="mt-1">
+            <p className="text-sm break-all">{email}</p>
+  
+            <div className="mt-2">
               <label
                 htmlFor="photo-upload"
-                className="bg-yellow-500 text-white text-sm text-center rounded-md w-40 p-2 cursor-pointer hover:bg-yellow-600 transition duration-300 mt-4"
+                className="bg-yellow-500 text-white text-sm text-center rounded-md p-2 cursor-pointer hover:bg-yellow-600 transition duration-300 block w-full sm:w-40"
               >
-                Upload profile
+                Upload Profile
               </label>
-
               <input
                 id="photo-upload"
                 type="file"
@@ -355,28 +368,40 @@ export default function Dashboard() {
                 className="hidden"
               />
             </div>
-
           </div>
         </div>
-        <div className="flex gap-4">
-
-          <button onClick={handleLogout} className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg">
-            <FaSignOutAlt /> Logout
-          </button>
-          <button onClick={() => setDarkMode(!darkMode)} className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg">
+  
+        {/* Dark Mode & Logout for Desktop */}
+        <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className="flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg w-full sm:w-auto"
+          >
             <FaSun /> {darkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+  
+          {/* Logout hidden on mobile, shown on desktop */}
+          <button
+            onClick={handleLogout}
+            className="hidden md:flex items-center justify-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto"
+          >
+            <FaSignOutAlt /> Logout
           </button>
         </div>
       </div>
-
+  
       {/* Render Tabs */}
       {renderContent()}
-      <footer className="text-center text-base mt-20 opacity-80">
+  
+      {/* Footer */}
+      <footer className="text-center text-sm mt-16 opacity-80">
         Made with ❤️ by Himanshu
       </footer>
-
     </div>
   );
-}
+  
+  
+  
+}  
 
 
